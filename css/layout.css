@@ -1,0 +1,396 @@
+/* --- LAYOUT --- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-xl);
+  height: 64px;
+  background: rgba(248, 250, 251, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.header-tagline {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-left: auto;
+  letter-spacing: 0.02em;
+}
+
+/* --- Header nav --- */
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: auto;
+}
+
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.4em 0.75em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  transition: color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              background var(--duration-fast) ease;
+  white-space: nowrap;
+}
+
+.header-btn:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: var(--bg-mid);
+}
+
+.header-btn:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.header-btn-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* --- Principles button --- */
+
+.header-btn-principles {
+  border-color: var(--red);
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.header-btn-principles:hover {
+  background: var(--red-soft);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* --- Hamburger (mobile only) --- */
+
+.hamburger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--text);
+  transition: background var(--duration-fast) ease;
+}
+
+.hamburger-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.hamburger-btn:hover {
+  background: var(--bg-mid);
+}
+
+.hamburger-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: var(--space-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-sm);
+  min-width: 200px;
+  z-index: 110;
+}
+
+.hamburger-menu[data-open="true"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburger-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) ease;
+}
+
+.hamburger-link:hover {
+  background: var(--bg-mid);
+}
+
+.hamburger-link-principles {
+  color: var(--red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* --- Main content --- */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(64px + var(--space-2xl)) var(--space-xl) var(--space-3xl);
+  width: 100%;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* --- Hero --- */
+
+.hero-section {
+  text-align: center;
+  padding: var(--space-3xl) 0 var(--space-2xl);
+}
+
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--space-md);
+}
+
+.hero-headline em {
+  font-style: normal;
+  color: var(--teal);
+}
+
+.hero-lede {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* --- Sections --- */
+
+.demo-section {
+  padding: var(--space-2xl) 0;
+}
+
+.section-label {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: var(--space-sm);
+}
+
+/* --- Card surfaces --- */
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- StreamLog tab (right edge) --- */
+
+.streamlog-tab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #333333;
+  border: 1px solid #333333;
+  border-right: none;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  padding: var(--space-lg) var(--space-sm);
+  cursor: pointer;
+  transition: color var(--duration-fast) ease,
+              background var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+.streamlog-tab:hover {
+  color: #000000;
+  background: #cccccc;
+  box-shadow: var(--shadow-md);
+}
+
+.streamlog-tab:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.streamlog-panel {
+  position: fixed;
+  right: 0;
+  top: 64px;
+  bottom: 0;
+  width: 33.333vw;
+  min-width: 320px;
+  max-width: 500px;
+  z-index: 95;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform var(--duration-slow) var(--ease-out);
+  overflow-y: auto;
+  padding: var(--space-xl);
+}
+
+.streamlog-panel[data-open="true"] {
+  transform: translateX(0);
+}
+
+.streamlog-panel-header {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.streamlog-panel-close {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) ease,
+              background var(--duration-fast) ease;
+}
+
+.streamlog-panel-close:hover {
+  color: var(--text);
+  background: var(--bg-mid);
+}
+
+.streamlog-empty {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* --- Footer --- */
+
+.site-footer {
+  text-align: center;
+  padding: var(--space-lg) var(--space-xl);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0 var(--space-md);
+  }
+
+  .main-content {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .header-tagline {
+    display: none;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .streamlog-panel {
+    width: 85vw;
+    min-width: unset;
+  }
+
+  /* On mobile the right-edge vertical tab conflicts with Android's
+     back gesture zone. Move it to a horizontal button at the bottom,
+     inset from the edge so the gesture strip stays clear. */
+  .streamlog-tab {
+    top: unset;
+    bottom: var(--space-xl);
+    right: var(--space-md);
+    transform: none;
+    writing-mode: horizontal-tb;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .card {
+    padding: var(--space-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: var(--space-xl) 0;
+  }
+}

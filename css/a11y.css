@@ -1,0 +1,152 @@
+/* --- ACCESSIBILITY --- */
+/* WCAG 2.1 AA compliant */
+/* All font sizes 10% above standard (110% html base) */
+
+/* --- Skip link --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  z-index: 200;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--teal);
+  color: var(--text-inverse);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  text-decoration: none;
+  transition: top var(--duration-fast) ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* --- Screen reader only --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Focus rings --- */
+/* Visible on all interactive elements via :focus-visible */
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* Remove default focus for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* High contrast focus for form inputs */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 0;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px var(--teal-glow);
+}
+
+/* Focus on buttons */
+button:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* --- Interactive elements --- */
+[role="button"],
+[tabindex="0"] {
+  cursor: pointer;
+}
+
+/* --- Reduced motion (comprehensive) --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .streamlog-panel,
+  .modal-overlay,
+  .modal-card,
+  .conditional-field {
+    transition: none !important;
+  }
+}
+
+/* --- High contrast mode --- */
+@media (forced-colors: active) {
+  .field-input,
+  .field-select {
+    border: 2px solid ButtonText;
+  }
+
+  .field-input[aria-invalid="true"],
+  .field-select[aria-invalid="true"] {
+    border-color: Mark;
+  }
+
+  :focus-visible {
+    outline: 3px solid Highlight;
+  }
+
+  .modal-overlay {
+    background: Canvas;
+  }
+
+  .modal-card {
+    border: 2px solid ButtonText;
+  }
+
+  .form-section.drag-over {
+    outline: 3px dashed Highlight;
+  }
+
+  .log-entry-claimed {
+    border-left-color: Highlight;
+  }
+
+  .log-entry-pending {
+    border-left-color: Mark;
+  }
+}
+
+/* --- Touch target minimum size (44x44px) --- */
+.checkbox-input {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.modal-close {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.streamlog-tab {
+  min-width: 44px;
+}
+
+.streamlog-panel-close {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* --- Ensure text remains visible during webfont load --- */
+body {
+  font-display: swap;
+}

@@ -1,0 +1,77 @@
+/* --- TOKENS --- */
+/* Light palette, spacing, radii, shadows */
+/* All comments use ASCII only to avoid encoding issues */
+
+:root {
+  /* --- Backgrounds --- */
+  --bg-deep: #f8fafb;
+  --bg-mid: #eef4f6;
+  --bg-surface: #ffffff;
+
+  /* --- Text --- */
+  --text: #1a2e33;
+  --text-secondary: #4a6670;
+  --text-inverse: #f8fafb;
+
+  /* --- Brand accents --- */
+  --green-light: #0d9466;
+  --green-mid: #0d9466;
+  --green-soft: #d1fae5;
+  --green-glow: rgba(13, 148, 102, 0.12);
+
+  --teal: #0f766e;
+  --teal-soft: #ccfbf1;
+  --teal-glow: rgba(15, 118, 110, 0.10);
+
+  --blue-light: #0284c7;
+  --blue-soft: #e0f2fe;
+  --blue-glow: rgba(2, 132, 199, 0.10);
+
+  --gold: #b45309;
+  --gold-soft: #fef3c7;
+  --gold-glow: rgba(180, 83, 9, 0.10);
+
+  --red: #dc2626;
+  --red-soft: #fee2e2;
+
+  /* --- Borders --- */
+  /* Opaque values required for SC 1.4.11 (3:1 non-text contrast)   */
+  /* --border:        #6A8F97 vs --bg-deep #f8fafb  ~3.4:1          */
+  /* --border-strong: #4E7880 vs --bg-deep #f8fafb  ~4.6:1          */
+  --border: #6A8F97;
+  --border-strong: #4E7880;
+
+  /* --- Modal --- */
+  --modal-overlay: rgba(26, 46, 51, 0.6);
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+  /* --- Typography --- */
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* --- Spacing --- */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* --- Radii --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* --- Transitions --- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+}

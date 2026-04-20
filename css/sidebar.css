@@ -1,0 +1,297 @@
+/* --- SIDEBAR: Demo Guide --- */
+
+/* --- Tab (left edge, mirrors streamlog-tab on right) --- */
+
+.sidebar-tab {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: translateY(-50%) rotate(180deg);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #333333;
+  border: 1px solid #333333;
+  border-right: none;
+  border-radius: var(--radius-md) 0  0  var(--radius-md);
+  padding: var(--space-lg) var(--space-sm);
+  cursor: pointer;
+  transition: color var(--duration-fast) ease,
+              background var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+.sidebar-tab:hover {
+  color: #000000;
+  background: #cccccc;
+  box-shadow: var(--shadow-md);
+}
+
+.sidebar-tab:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* --- Panel --- */
+
+.sidebar-panel {
+  position: fixed;
+  left: 0;
+  top: 64px;
+  bottom: 0;
+  width: 340px;
+  max-width: 85vw;
+  z-index: 95;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-100%);
+  transition: transform var(--duration-slow) var(--ease-out);
+  overflow-y: auto;
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-panel[data-open="true"] {
+  transform: translateX(0);
+}
+
+/* --- Panel header --- */
+
+.sidebar-panel-header {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.sidebar-panel-close {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) ease,
+              background var(--duration-fast) ease;
+}
+
+.sidebar-panel-close:hover {
+  color: var(--text);
+  background: var(--bg-mid);
+}
+
+/* --- Locale switcher --- */
+
+.locale-switcher {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  flex-shrink: 0;
+}
+
+.locale-btn {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-deep);
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all var(--duration-fast) ease;
+}
+
+.locale-btn:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+  background: var(--teal-soft);
+}
+
+.locale-btn[aria-current="page"] {
+  background: var(--teal);
+  color: var(--text-inverse);
+  border-color: var(--teal);
+  pointer-events: none;
+}
+
+/* --- Accordion list --- */
+
+.demo-accordion {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.demo-accordion-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.demo-accordion-item:last-child {
+  border-bottom: none;
+}
+
+/* --- Flash highlight --- */
+
+@keyframes demo-flash {
+  0%   { background: var(--gold-soft); }
+  100% { background: transparent; }
+}
+
+.demo-accordion-item[data-flash="true"] {
+  animation: demo-flash 1.5s ease-out;
+}
+
+/* --- Accordion trigger --- */
+
+.demo-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xs);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: color var(--duration-fast) ease;
+}
+
+.demo-accordion-trigger:hover {
+  color: var(--teal);
+}
+
+.demo-accordion-trigger:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: -2px;
+  border-radius: var(--radius-sm);
+}
+
+.demo-accordion-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.demo-accordion-chevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.demo-accordion-trigger[aria-expanded="true"] .demo-accordion-chevron {
+  transform: rotate(90deg);
+}
+
+/* --- Accordion content --- */
+
+.demo-accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--duration-slow) var(--ease-out);
+}
+
+.demo-accordion-content[data-expanded="true"] {
+  max-height: 600px;
+}
+
+.demo-accordion-body {
+  padding: 0 var(--space-xs) var(--space-md) calc(22px + var(--space-sm) + var(--space-xs));
+}
+
+.demo-accordion-section-label {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.demo-accordion-section-label-siso {
+  color: var(--teal);
+}
+
+.demo-accordion-section-label-react {
+  color: var(--gold);
+}
+
+.demo-accordion-text {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.demo-accordion-text:last-child {
+  margin-bottom: 0;
+}
+
+.demo-accordion-text code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--bg-mid);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+  color: var(--teal);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 768px) {
+  .sidebar-panel {
+    width: 85vw;
+    max-width: none;
+  }
+
+  .sidebar-tab {
+    top: unset;
+    bottom: var(--space-xl);
+    left: var(--space-md);
+    transform: none;
+    writing-mode: horizontal-tb;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    border: 1px solid #333333;
+    border-bottom: none;
+    padding: var(--space-sm) var(--space-md);
+  }
+}

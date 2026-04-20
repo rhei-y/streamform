@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>streamform</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/a11y.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/streamlog.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <a href="https://streamform.rhei.world" class="logo" aria-label="streamform home">streamform</a>
+    <nav class="header-nav" aria-label="Project links">
+      <a class="header-btn" href="https://github.com/anthropics/streamform" target="_blank" rel="noopener">
+        <svg class="header-btn-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        streamform
+      </a>
+      <a class="header-btn" href="https://github.com/anthropics/siso-core" target="_blank" rel="noopener">
+        <svg class="header-btn-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        siso core
+      </a>
+      <a class="header-btn header-btn-principles" href="docs/PRINCIPLES.md" target="_blank" rel="noopener">
+          SISO PRINCIPLES
+        </a>
+    </nav>
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu" aria-expanded="false" aria-controls="hamburger-menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <div class="hamburger-menu" id="hamburger-menu" data-open="false">
+      <a class="hamburger-link" href="https://github.com/anthropics/streamform" target="_blank" rel="noopener">
+        <svg class="header-btn-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        streamform repo
+      </a>
+
+      <a class="hamburger-link hamburger-link-principles" href="https://github.com/rhei-y/Siso-Core" target="_blank" rel="noopener">
+        <svg class="header-btn-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        SISO Core Repo
+      </a>
+    </div>
+  </header>
+
+  <main class="main-content" id="main" role="main">
+
+  <div class="page-container">
+
+    <section class="hero-section">
+      <h1 class="hero-headline">
+        What if the DOM <em>was</em> the state?
+      </h1>
+      <p class="hero-lede">
+        Eight interactions React finds difficult, implemented without React.
+        Every action runs live, then a modal explains what happened
+        and why React would struggle. Try each interaction below.
+      </p>
+    </section>
+
+    <section class="demo-section" aria-label="Shipping form demo">
+      <span class="section-label">Interactive Demo</span>
+
+      <div class="form-grid" id="form-grid">
+
+        <!-- BILLING -->
+        <div class="form-section" id="billing-section" data-address="billing" draggable="true">
+          <div class="form-section-header">
+            <h2 class="form-section-title">Billing Address</h2>
+            <div class="form-section-actions">
+              <span class="form-section-badge">Billing</span>
+              <span class="drag-handle" aria-hidden="true" title="Drag to swap">&#x2630;</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label field-label-required" for="billing-name">Full Name</label>
+            <input class="field-input" type="text" id="billing-name" name="billing-name" autocomplete="billing name" placeholder="Jane Smith" required aria-required="true">
+            <div class="field-error" id="billing-name-error" aria-live="polite"></div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label field-label-required" for="billing-address">Street Address</label>
+            <input class="field-input" type="text" id="billing-address" name="billing-address" autocomplete="billing street-address" placeholder="123 Main St" required aria-required="true">
+            <div class="field-error" id="billing-address-error" aria-live="polite"></div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label field-label-required" for="billing-city">City</label>
+              <input class="field-input" type="text" id="billing-city" name="billing-city" autocomplete="billing address-level2" placeholder="Portland" required aria-required="true">
+              <div class="field-error" id="billing-city-error" aria-live="polite"></div>
+            </div>
+            <div class="field-group">
+              <label class="field-label field-label-required" for="billing-state">State / Province <span class="demo-badge">Demo 2</span></label>
+              <select class="field-select" id="billing-state" name="billing-state" autocomplete="billing address-level1" required aria-required="true">
+                <option value="">Select...</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label field-label-required" for="billing-postal">Postal / ZIP <span class="demo-badge">Demo 2</span></label>
+              <input class="field-input" type="text" id="billing-postal" name="billing-postal" autocomplete="billing postal-code" placeholder="12345" required aria-required="true">
+              <div class="field-error" id="billing-postal-error" aria-live="polite"></div>
+            </div>
+            <div class="field-group">
+              <label class="field-label field-label-required" for="billing-country">Country <span class="demo-badge">Demo 2</span></label>
+              <select class="field-select" id="billing-country" name="billing-country" autocomplete="billing country" required aria-required="true">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AU">Australia</option>
+                <option value="DE">Germany</option>
+                <option value="JP">Japan</option>
+                <option value="IN">India</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="billing-phone">Phone <span class="demo-badge">Demo 1</span></label>
+            <input class="field-input" type="tel" id="billing-phone" name="billing-phone" autocomplete="billing tel" placeholder="(555) 123-4567" data-format="phone">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label field-label-required" for="billing-email">Email <span class="demo-badge">Demo 5</span></label>
+            <input class="field-input" type="email" id="billing-email" name="billing-email" autocomplete="billing email" placeholder="jane@example.com" required aria-required="true">
+            <div class="field-error" id="billing-email-error" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- SHIPPING -->
+        <div class="form-section" id="shipping-section" data-address="shipping" draggable="true">
+          <div class="form-section-header">
+            <h2 class="form-section-title">Shipping Address</h2>
+            <div class="form-section-actions">
+              <span class="form-section-badge">Shipping</span>
+              <span class="drag-handle" aria-hidden="true" title="Drag to swap">&#x2630;</span>
+            </div>
+          </div>
+
+          <label class="checkbox-group" id="same-as-billing-group">
+            <input class="checkbox-input" type="checkbox" id="same-as-billing" name="same-as-billing">
+            <span class="checkbox-label">Same as billing address <span class="demo-badge">Demo 3</span></span>
+          </label>
+
+          <div class="field-group shipping-type-group">
+            <label class="field-label" for="shipping-type">Shipping Type <span class="demo-badge">Demo 4</span></label>
+            <select class="field-select" id="shipping-type" name="shipping-type">
+              <option value="personal">Personal</option>
+              <option value="business">Business</option>
+            </select>
+          </div>
+
+          <div class="field-group conditional-field" id="company-name-group" style="display:none" aria-hidden="true">
+            <label class="field-label" for="shipping-company">Company Name</label>
+            <input class="field-input" type="text" id="shipping-company" name="shipping-company" placeholder="Acme Corp">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label field-label-required" for="shipping-name">Full Name</label>
+            <input class="field-input" type="text" id="shipping-name" name="shipping-name" autocomplete="shipping name" placeholder="Jane Smith" required aria-required="true">
+            <div class="field-error" id="shipping-name-error" aria-live="polite"></div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label field-label-required" for="shipping-address">Street Address</label>
+            <input class="field-input" type="text" id="shipping-address" name="shipping-address" autocomplete="shipping street-address" placeholder="123 Main St" required aria-required="true">
+            <div class="field-error" id="shipping-address-error" aria-live="polite"></div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label field-label-required" for="shipping-city">City</label>
+              <input class="field-input" type="text" id="shipping-city" name="shipping-city" autocomplete="shipping address-level2" placeholder="Portland" required aria-required="true">
+              <div class="field-error" id="shipping-city-error" aria-live="polite"></div>
+            </div>
+            <div class="field-group">
+              <label class="field-label field-label-required" for="shipping-state">State / Province</label>
+              <select class="field-select" id="shipping-state" name="shipping-state" autocomplete="shipping address-level1" required aria-required="true">
+                <option value="">Select...</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label field-label-required" for="shipping-postal">Postal / ZIP</label>
+              <input class="field-input" type="text" id="shipping-postal" name="shipping-postal" autocomplete="shipping postal-code" placeholder="12345" required aria-required="true">
+              <div class="field-error" id="shipping-postal-error" aria-live="polite"></div>
+            </div>
+            <div class="field-group">
+              <label class="field-label field-label-required" for="shipping-country">Country</label>
+              <select class="field-select" id="shipping-country" name="shipping-country" autocomplete="shipping country" required aria-required="true">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AU">Australia</option>
+                <option value="DE">Germany</option>
+                <option value="JP">Japan</option>
+                <option value="IN">India</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="shipping-phone">Phone</label>
+            <input class="field-input" type="tel" id="shipping-phone" name="shipping-phone" autocomplete="shipping tel" placeholder="(555) 123-4567" data-format="phone">
+          </div>
+        </div>
+
+      </div><!-- .form-grid -->
+
+      <!-- Swap button -->
+      <div class="swap-row">
+        <button class="swap-button" id="swap-addresses" type="button" aria-label="Swap billing and shipping addresses">&#x21C4; Swap Addresses <span class="demo-badge">Demo 6</span></button>
+      </div>
+
+      <!-- Undo / Redo toolbar -->
+      <div class="undo-toolbar" role="toolbar" aria-label="Undo and redo form changes">
+        <button class="undo-btn" id="undo-btn" type="button" disabled aria-label="Undo last change">&#x21A9; Undo</button>
+        <span class="undo-label"><kbd class="undo-kbd">Ctrl+Z</kbd> / <kbd class="undo-kbd">Ctrl+Shift+Z</kbd> <span class="demo-badge">Demo 7</span></span>
+        <button class="undo-btn" id="redo-btn" type="button" disabled aria-label="Redo last undone change">Redo &#x21AA;</button>
+      </div>
+
+      <!-- Tax summary -->
+      <div class="tax-summary" id="tax-summary">
+        <div class="tax-summary-title">Order Summary</div>
+        <div class="tax-row">
+          <span class="tax-row-label">Subtotal</span>
+          <span class="tax-row-value" id="tax-subtotal">$100.00</span>
+        </div>
+        <div class="tax-row">
+          <span class="tax-row-label">Tax (<span id="tax-rate-label">0%</span>)</span>
+          <span class="tax-row-value" id="tax-amount">$0.00</span>
+        </div>
+        <div class="tax-row tax-row-total">
+          <span class="tax-row-label">Total</span>
+          <span class="tax-row-value" id="tax-total">$100.00</span>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- Modal -->
+  <!-- Welcome modal -->
+  <div class="welcome-overlay" id="welcome-modal" data-open="true" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+    <div class="welcome-card">
+      <div class="welcome-header">
+        <h2 class="welcome-title" id="welcome-title">Welcome to <em>streamform</em></h2>
+        <button class="welcome-close" id="welcome-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="welcome-body">
+        <p class="welcome-text">
+          Eight form interactions that are notoriously difficult in React,
+          built without any framework. No virtual DOM, no state management
+          library, no build step. Just the browser's own DOM as the single
+          source of truth.
+        </p>
+        <p class="welcome-text">
+          Try each interaction in the form below. Two panels help you
+          understand what's happening under the hood:
+        </p>
+        <div class="welcome-pointers">
+          <div class="welcome-pointer">
+            <div class="welcome-pointer-dir">&larr; Left</div>
+            <div class="welcome-pointer-name">Demo Guide</div>
+            <div class="welcome-pointer-desc">
+              Explains each demo as you trigger it — what SISO did
+              and what React would need to do the same thing.
+            </div>
+          </div>
+          <div class="welcome-pointer">
+            <div class="welcome-pointer-dir">Right &rarr;</div>
+            <div class="welcome-pointer-name">Stream Log</div>
+            <div class="welcome-pointer-desc">
+              A live event log. Every event that flows through the
+              stream appears here with its type, claiming gate, and payload.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="welcome-footer">
+        <button class="welcome-start-btn" id="welcome-start">Get Started</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="demo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <div class="modal-demo-number" id="modal-demo-number"></div>
+          <h2 class="modal-title" id="modal-title"></h2>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <div class="modal-section-label modal-section-label-siso">How this works</div>
+          <div class="modal-section-text" id="modal-siso-text"></div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-label modal-section-label-react">In React, you'd need...</div>
+          <div class="modal-section-text" id="modal-react-text"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <label class="modal-dismiss-group">
+          <input class="modal-dismiss-checkbox" type="checkbox" id="modal-dismiss-check">
+          <span>Don't show this again</span>
+        </label>
+        <button class="modal-close-btn" id="modal-close-btn">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    &copy; 2026 rhei.world
+  </footer>
+
+  <!-- Demo Guide sidebar -->
+  <button
+    class="sidebar-tab"
+    id="sidebar-tab"
+    aria-label="Toggle demo guide"
+    aria-expanded="false"
+    aria-controls="sidebar-panel"
+  >Demo Guide</button>
+
+  <aside
+    class="sidebar-panel"
+    id="sidebar-panel"
+    aria-label="Demo guide"
+    role="complementary"
+  >
+    <div class="sidebar-panel-header">
+      <span>Demo Guide</span>
+      <button
+        class="sidebar-panel-close"
+        id="sidebar-panel-close"
+        aria-label="Close demo guide"
+      >&times;</button>
+    </div>
+
+    <div class="locale-switcher" role="navigation" aria-label="Locale">
+      <a class="locale-btn" href="./" aria-current="page">US</a>
+      <a class="locale-btn" href="in/">India</a>
+    </div>
+
+    <ul class="demo-accordion" id="demo-accordion"></ul>
+  </aside>
+
+  <!-- StreamLog slide-out panel -->
+  <button
+    class="streamlog-tab"
+    id="streamlog-tab"
+    aria-label="Toggle stream event log"
+    aria-expanded="false"
+    aria-controls="streamlog-panel"
+  >Stream Log</button>
+
+  <aside
+    class="streamlog-panel"
+    id="streamlog-panel"
+    aria-label="Stream event log"
+    role="complementary"
+  >
+    <div class="streamlog-panel-header">
+      <span>Stream Log</span>
+      <button
+        class="streamlog-panel-close"
+        id="streamlog-panel-close"
+        aria-label="Close stream log"
+      >&times;</button>
+    </div>
+    <p class="streamlog-empty" id="streamlog-empty">
+      Interact with the form to see events appear here.
+    </p>
+    <div id="streamlog-entries" aria-live="polite"></div>
+  </aside>
+
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

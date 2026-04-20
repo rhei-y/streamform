@@ -1,0 +1,175 @@
+/* --- STREAMLOG PANEL --- */
+
+.log-entry {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-entry-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: 0.15rem;
+}
+
+.log-seq {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  min-width: 2.5em;
+}
+
+.log-time {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.log-stream-id {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--blue-light);
+  background: var(--blue-soft);
+  padding: 0.05em 0.35em;
+  border-radius: var(--radius-sm);
+}
+
+.log-entry-body {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.log-type {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.log-claimed {
+  font-size: 0.75rem;
+  color: var(--green-light);
+  font-weight: 500;
+}
+
+.log-pending {
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* --- Claimed/pending left border indicator --- */
+
+.log-entry-claimed {
+  border-left: 3px solid var(--green-light);
+  padding-left: var(--space-sm);
+}
+
+.log-entry-pending {
+  border-left: 3px solid var(--gold);
+  padding-left: var(--space-sm);
+}
+
+/* --- Expandable data payload --- */
+
+.log-data-details {
+  margin-top: 0.2rem;
+}
+
+.log-data-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--teal);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.log-data-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.log-data-toggle::before {
+  content: '\25B6\00a0';
+  font-size: 0.6rem;
+  transition: transform var(--duration-fast) ease;
+  display: inline-block;
+}
+
+details[open] .log-data-toggle::before {
+  transform: rotate(90deg);
+}
+
+.log-data-pre {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--bg-mid);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  margin-top: 0.2rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* --- Undo/redo toolbar --- */
+
+.undo-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.undo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: color var(--duration-fast) ease,
+              background var(--duration-fast) ease,
+              border-color var(--duration-fast) ease;
+}
+
+.undo-btn:hover:not(:disabled) {
+  color: var(--teal);
+  background: var(--teal-soft);
+  border-color: var(--teal);
+}
+
+.undo-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.undo-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.undo-kbd {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--bg-mid);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
