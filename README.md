@@ -1,7 +1,5 @@
 # streamform
 
-<img width="1526" height="726" alt="streemform" src="https://github.com/user-attachments/assets/08d3baca-7a80-4f44-9df3-81317fdf1d92" />
-
 
 Eight interactions React finds difficult, implemented without React in ~1,500 lines. Runs in any modern browser. No build step, no npm install, no framework.
 
@@ -10,7 +8,9 @@ Eight interactions React finds difficult, implemented without React in ~1,500 li
 - **Tests:** ~1,700 lines, 139 assertions, zero dependencies
 - **Ships to browser:** ~22 KB gzipped (16 KB JS + 5.5 KB CSS)
 
-[GIF will go here â€” form being filled out with StreamLog panel visible]
+
+
+<img width="1526" height="726" alt="streemform" src="https://github.com/user-attachments/assets/08d3baca-7a80-4f44-9df3-81317fdf1d92" />
 
 ---
 
