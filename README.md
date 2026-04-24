@@ -145,6 +145,6 @@ WCAG 2.1 AA throughout:
 
 ## License
 
-MIT. See LICENSE file.
+GPL3. See LICENSE file.
 
 Contributions welcome. PRs that preserve SISO compliance (see `docs/PRINCIPLES.md`) will be considered.
